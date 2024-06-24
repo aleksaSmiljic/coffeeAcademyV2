@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../Schemas/registerSchema";
 import { useLoginStore } from "../stores/LoginStore";
 
-const RegisterForm = () => {
+const RegisterFormZod = () => {
   const {
     register,
     handleSubmit,
@@ -111,4 +111,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default RegisterFormZod;

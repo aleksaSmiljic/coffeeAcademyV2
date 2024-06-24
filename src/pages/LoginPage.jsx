@@ -3,6 +3,7 @@ import { useLoginStore } from "../stores/LoginStore";
 import { useState } from "react";
 import SuccessfulLogin from "../components/SuccessfulLogin";
 import LoginForm from "../components/LoginForm";
+import LoginFormZod from "../TestComponents/LoginFormZod";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -63,13 +64,14 @@ const LoginPage = () => {
             Prijavi se
           </div>
           <div className="w-full">
-            <LoginForm
+            {/* <LoginForm
               email={email}
               password={password}
               handleEmailChange={handleEmailChange}
               handlePasswordChange={handlePasswordChange}
               handleSubmit={handleSubmit}
-            />
+            /> */}
+            <LoginFormZod />
           </div>
         </div>
       )}

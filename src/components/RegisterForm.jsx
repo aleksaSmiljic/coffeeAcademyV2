@@ -37,11 +37,11 @@ const RegisterForm = () => {
           {...register("fullName")}
           placeholder="Ime i Prezime"
           type="text"
-          className={`block border border-slate-300 placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+          className={`block border placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none
             ${
               errors.fullName
-                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-0 focus:ring-pink-500"
-                : ""
+                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                : "border-slate-300 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             }`}
         />
         {errors.fullName && (
@@ -52,11 +52,11 @@ const RegisterForm = () => {
         <input
           {...register("email")}
           placeholder="Email"
-          className={`block border border-slate-300 placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+          className={`block border placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none
             ${
               errors.email
-                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-0 focus:ring-pink-500"
-                : ""
+                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                : "border-slate-300 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             }`}
         />
         {errors.email && (
@@ -68,12 +68,12 @@ const RegisterForm = () => {
           {...register("password")}
           placeholder="Šifra"
           type="password"
-          className={`block border border-slate-300 placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-          ${
-            errors.password
-              ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-0 focus:ring-pink-500"
-              : ""
-          }`}
+          className={`block border placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none
+            ${
+              errors.password
+                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                : "border-slate-300 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            }`}
         />
         {errors.password && (
           <div className="text-pink-600">{errors.password.message}</div>
@@ -84,11 +84,11 @@ const RegisterForm = () => {
           {...register("confirmPassword")}
           placeholder="Šifra (ponovo)"
           type="password"
-          className={`block border border-slate-300 placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+          className={`block border placeholder-slate-400 shadow-sm w-full font-montserrat p-1 h-12 rounded-md my-2 focus:outline-none
             ${
               errors.confirmPassword
-                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-0 focus:ring-pink-500"
-                : ""
+                ? "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                : "border-slate-300 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             }`}
         />
         {errors.confirmPassword && (

@@ -13,34 +13,22 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const { setLogin, setIsAdminTrue } = useLoginStore();
+  const { login } = useLoginStore();
   const navigate = useNavigate();
 
-  const localStorageUserData = JSON.parse(localStorage.getItem("user"));
-  const localStorageAdminData = JSON.parse(localStorage.getItem("admin"));
-
+  const userData = JSON.parse(localStorage.getItem("user"));
   const USER = { userEmail: "user@user.com", userPassword: "user1234" };
   const ADMIN = { adminEmail: "admin@admin.com", adminPassword: "admin1234" };
 
   const onSubmit = (data) => {
     console.log(data);
     if (
-      (localStorageUserData?.email === data.email &&
-        localStorageUserData?.password === data.password) ||
-      (USER.userEmail === data.email && USER.userPassword === data.password)
-    ) {
-      setLogin();
-      navigate("/");
-      return;
-    }
-
-    if (
-      (localStorageAdminData?.email === data.email &&
-        localStorageAdminData?.password === data.password) ||
+      (userData?.email === data.email &&
+        userData?.password === data.password) ||
+      (USER.userEmail === data.email && USER.userPassword === data.password) ||
       (ADMIN.adminEmail === data.email && ADMIN.adminPassword === data.password)
     ) {
-      setLogin();
-      setIsAdminTrue();
+      login();
       navigate("/");
       return;
     }

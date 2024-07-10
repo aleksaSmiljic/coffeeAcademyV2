@@ -1,12 +1,12 @@
-import { useLoginStore } from "../stores/LoginStore";
 import SuccessfulLogin from "../components/SuccessfulLogin";
 import LoginForm from "../components/LoginForm";
+import { useLoginStore } from "../stores/LoginStore";
 
 const LoginPage = () => {
-  const { login, setLogout } = useLoginStore();
+  const { isLogin, logout } = useLoginStore();
 
   function handleLogout() {
-    setLogout();
+    logout();
   }
 
   return (
@@ -16,7 +16,7 @@ const LoginPage = () => {
         alt="caffee academy logo"
         className="w-48 h-auto pb-28"
       />
-      {login ? (
+      {isLogin ? (
         <SuccessfulLogin handleLogout={handleLogout} />
       ) : (
         <div className="flex justify-center items-center flex-col w-full">

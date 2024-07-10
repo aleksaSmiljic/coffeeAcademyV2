@@ -11,15 +11,15 @@ import { useLoginStore } from "../stores/LoginStore";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { login, isAdmin } = useLoginStore();
+  const { isLogin, isAdmin } = useLoginStore();
 
   let Links = [
     { name: "Home", link: "/" },
     isAdmin
       ? { name: "Admin", link: "/admin" }
       : { name: "Status", link: "/status" },
-    login ? "" : { name: "Register", link: "/register" },
-    login
+    isLogin ? "" : { name: "Register", link: "/register" },
+    isLogin
       ? { name: "Logout", link: "/login" }
       : { name: "Login", link: "/login" },
   ];
@@ -98,7 +98,7 @@ const Header = () => {
                 onClick={handleCloseClick}
                 key={link.link}
                 className={`hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 ${
-                  login ? "md:mr-6" : "md:mr-10"
+                  isLogin ? "md:mr-6" : "md:mr-10"
                 } ${
                   link.name === "Login" || link.name === "Logout"
                     ? "md:text-white md:bg-[#248CC5] md:hover:bg-[#164864] md:hover:text-white duration-300 rounded-md md:py-2 md:px-4"

@@ -13,20 +13,18 @@ const RegisterForm = () => {
     resolver: zodResolver(registerSchema),
   });
 
-  const { setLogin, setIsAdminTrue } = useLoginStore();
-
+  const { login, setIsAdminTrue } = useLoginStore();
   const onSubmit = (data) => {
     console.log(data);
     if (data.email.includes("@coffee.com")) {
       setIsAdminTrue();
-      setLogin();
+      login();
       localStorage.setItem("admin", JSON.stringify(data));
     } else {
-      setLogin();
+      login();
       localStorage.setItem("user", JSON.stringify(data));
     }
   };
-
   return (
     <form
       className={`flex justify-center items-center flex-col`}

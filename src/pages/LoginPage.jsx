@@ -4,9 +4,18 @@ import { useLoginStore } from "../stores/LoginStore";
 
 const LoginPage = () => {
   const { isLogin, logout } = useLoginStore();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const admin = JSON.parse(localStorage.getItem("admin"));
 
   function handleLogout() {
-    logout();
+    if (admin?.isLogin) {
+      logout(admin?.email, admin?.password);
+      return;
+    }
+    if (user?.isLogin) {
+      logout(user?.email, user?.password);
+      return;
+    }
   }
 
   return (

@@ -13,17 +13,10 @@ const RegisterForm = () => {
     resolver: zodResolver(registerSchema),
   });
 
-  const { login, setIsAdminTrue } = useLoginStore();
+  const { login } = useLoginStore();
+
   const onSubmit = (data) => {
-    console.log(data);
-    if (data.email.includes("@coffee.com")) {
-      setIsAdminTrue();
-      login();
-      localStorage.setItem("admin", JSON.stringify(data));
-    } else {
-      login();
-      localStorage.setItem("user", JSON.stringify(data));
-    }
+    login(data?.email, data?.password);
   };
   return (
     <form

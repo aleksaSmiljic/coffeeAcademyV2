@@ -5,17 +5,30 @@ import {
   XMarkIcon,
   //   ShoppingCartIcon,
 } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoginStore } from "../stores/LoginStore";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { isLogin, isAdmin } = useLoginStore();
+  const { isLogin, admin, login } = useLoginStore();
+
+  useEffect(() => {
+    const admin = JSON.parse(localStorage.getItem("admin"));
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (admin?.isLogin) {
+      login(admin?.email, admin?.password);
+      return;
+    }
+    if (user?.isLogin) {
+      login(user?.email, user?.password);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   let Links = [
     { name: "Home", link: "/" },
-    isAdmin
+    admin
       ? { name: "Admin", link: "/admin" }
       : { name: "Status", link: "/status" },
     isLogin ? "" : { name: "Register", link: "/register" },

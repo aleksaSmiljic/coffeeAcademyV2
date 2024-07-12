@@ -16,6 +16,7 @@ const LoginForm = () => {
   const { login } = useLoginStore();
   const navigate = useNavigate();
 
+  const adminData = JSON.parse(localStorage.getItem("admin"));
   const userData = JSON.parse(localStorage.getItem("user"));
   const USER = { userEmail: "user@user.com", userPassword: "user1234" };
   const ADMIN = { adminEmail: "admin@admin.com", adminPassword: "admin1234" };
@@ -23,12 +24,32 @@ const LoginForm = () => {
   const onSubmit = (data) => {
     console.log(data);
     if (
-      (userData?.email === data.email &&
-        userData?.password === data.password) ||
-      (USER.userEmail === data.email && USER.userPassword === data.password) ||
-      (ADMIN.adminEmail === data.email && ADMIN.adminPassword === data.password)
+      userData?.email === data.email &&
+      userData?.password === data.password
     ) {
-      login();
+      login(data.email, data.password);
+      navigate("/");
+      return;
+    }
+    if (
+      adminData?.email === data.email &&
+      adminData?.password === data.password
+    ) {
+      login(data.email, data.password);
+      navigate("/");
+      return;
+    }
+
+    if (USER.userEmail === data.email && USER.userPassword === data.password) {
+      login(data.email, data.password);
+      navigate("/");
+      return;
+    }
+    if (
+      ADMIN.adminEmail === data.email &&
+      ADMIN.adminPassword === data.password
+    ) {
+      login(data.email, data.password);
       navigate("/");
       return;
     }

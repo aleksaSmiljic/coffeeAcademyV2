@@ -23,14 +23,15 @@ export const useLoginStore = create((set, get) => ({
       isLogin: false,
       admin: email?.includes("@coffee.com") ? true : false,
     });
-    localStorage.setItem(
-      `${email?.includes("@coffee.com") ? "admin" : "user"}`,
-      JSON.stringify({
-        email,
-        password,
-        admin: get().admin,
-        isLogin: get().isLogin,
-      })
-    );
+    email ??
+      localStorage.setItem(
+        `${email?.includes("@coffee.com") ? "admin" : "user"}`,
+        JSON.stringify({
+          email,
+          password,
+          admin: get().admin,
+          isLogin: get().isLogin,
+        })
+      );
   },
 }));

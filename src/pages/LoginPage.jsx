@@ -16,6 +16,9 @@ const LoginPage = () => {
       logout(user?.email, user?.password);
       return;
     }
+    if (!admin && !user) {
+      logout();
+    }
   }
 
   return (
